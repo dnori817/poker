@@ -1,0 +1,9 @@
+.card {
+  /* border: 1px black solid; */
+  height: 490px;
+  width: 350px;
+  margin: 5px;
+  background-image: url("./images/card_back.png");
+  background-size: contain;
+  float: left;
+}
