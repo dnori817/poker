@@ -1,34 +1,41 @@
-// const deck = {
-   
+// const card = {
+//   name: "Ace of Spades"
+//   label: 
+//   rank: //
+//   suit: 
+//   image:
+
 // }
 
-const card = {
-  name: "Ace of Spades"
-  label: 
-  rank: //
-  suit: 
-  image:
+// const suits = []
+// 
+// A
+// 2 [2]
+// 3 [3]
+// 4 [4]
+// 5 [5]
+// 6 [6]
+// 7 [7]
+// 8 [8]
+// 9 [9]
+// 10 [10]
+// Jack [11]
+// Queen [12]
+// King [13]
+// Ace [1 || 14]
 
+// 
+
+// Fisher-Yates shuffle algorithm
+shuffle = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  return array;
 }
-
-const suits = []
-/*
-A
-2 [2]
-3 [3]
-4 [4]
-5 [5]
-6 [6]
-7 [7]
-8 [8]
-9 [9]
-10 [10]
-Jack [11]
-Queen [12]
-King [13]
-Ace [1 || 14]
-
-*/
 
 class Deck {
   constructor() {
@@ -40,12 +47,20 @@ class Deck {
 
     for (let suit in suits) {
       for (let rank in ranks) {
-        this.deck.push(`${ranks[rank]} ${suits[suit]}`);
+        this.deck.push(`${ranks[rank]}${suits[suit]}`);
       }
     }
 
   }
 }
 
-const deal = new Deck();
-console.log(deal.deck);
+const hand = new Deck();
+
+const shuff = shuffle(hand.deck)
+console.log(shuff)
+
+
+
+flop = () => {
+  
+}
