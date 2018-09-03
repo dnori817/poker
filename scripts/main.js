@@ -61,6 +61,12 @@ console.log(shuff)
 
 
 
+deal = () => {
+  deal1 = shuff.shift();
+  document.getElementById("card1").style.backgroundImage = "url('./assets/images/" + `${deal1}` + ".png')"
+}
+
+
 flop = () => {
   
 }

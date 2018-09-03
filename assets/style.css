@@ -1,9 +1,30 @@
+body {
+  background-image: url("./images/poker-table-felt.jpg");
+  background-size: cover;
+  /* background-repeat: no-repeat; */
+  
+}
+
 .card {
   /* border: 1px black solid; */
-  height: 490px;
-  width: 350px;
-  margin: 5px;
   background-image: url("./images/card_back.png");
-  background-size: contain;
+  height: 300px;
+  width: 200px;
+  margin: 5px;
+  background-size: cover;
+
   float: left;
+}
+
+
+
+.player1 .player2{
+  display: block;
+  clear: both;
+}
+
+
+.board {
+  display: block;
+  clear: both;
 }
