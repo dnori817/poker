@@ -2,8 +2,7 @@
 //   name: "Ace of Spades"
 //   label: 
 //   rank: //
-//   suit: 
-//   image:
+//   suit: /   image:
 
 // }
 
@@ -39,11 +38,20 @@ shuffle = (array) => {
 
 class Deck {
   constructor() {
-    this.deck = []; 
+    this.deck = [];
 
+    // let card = (suit, rank) 
+    // []
     const suits = ['H', 'S', 'C', 'D'];
-    const ranks = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10,'J', 'Q', 'K'];
+    const ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
 
+
+    // card = (suit, rank) => {
+    //   this.suit = suit;
+    //   this.rank = rank;
+    //   this.name = rank + ' of ' + suit;
+
+    // }
 
     for (let suit in suits) {
       for (let rank in ranks) {
@@ -51,22 +59,89 @@ class Deck {
       }
     }
 
+
+
   }
 }
 
-const hand = new Deck();
+const newDeck = new Deck();
 
-const shuff = shuffle(hand.deck)
-console.log(shuff)
+const shuffDeck = shuffle(newDeck.deck)
+console.log(shuffDeck)
 
+let player1 = [];
+let player2 =[];
+let board = [];
 
+usedCards = (used) => {
+	for (let i = 0; i < used; i++) {
+		dealt = shuffDeck.shift();
+	}
+}
 
 deal = () => {
-  deal1 = shuff.shift();
-  document.getElementById("card1").style.backgroundImage = "url('./assets/images/" + `${deal1}` + ".png')"
+	for (let i = 0; i < 4; i++) {
+		if (i % 2) {
+      deal2 = player2.push(shuffDeck[i]);
+      
+		} else {
+			deal1 = player1.push(shuffDeck[i]);
+		}
+	}
+  usedCards(4);
+
+  document.getElementById("card1").style.backgroundImage = "url('./assets/images/" + player1[0] + ".png')"
+  setTimeout(function() {
+    document.getElementById("card2").style.backgroundImage = "url('./assets/images/" + player2[0] + ".png')"
+  },500);
+  setTimeout(function() {
+    document.getElementById("card3").style.backgroundImage = "url('./assets/images/" + player1[1] + ".png')"
+  },1000);
+  setTimeout(function() {
+    document.getElementById("card4").style.backgroundImage = "url('./assets/images/" + player2[1] + ".png')"
+  },1500);  
 }
+
+
+
 
 
 flop = () => {
-  
+	for (let i = 1; i < 4; i++) {
+		board.push(shuffDeck[i]);
+	}
+  document.getElementById("flop1").style.backgroundImage = "url('./assets/images/" + board[0] + ".png')"
+  setTimeout(function() {
+    document.getElementById("flop2").style.backgroundImage = "url('./assets/images/" + board[1] + ".png')"
+  },500);
+  setTimeout(function() {
+    document.getElementById("flop3").style.backgroundImage = "url('./assets/images/" + board[2] + ".png')"
+  },1000);
+  usedCards(4);
 }
+
+
+turn = () => {
+	for (let i = 1; i < 2; i++) {
+		board.push(shuffDeck[i]);
+  }
+  document.getElementById("turn").style.backgroundImage = "url('./assets/images/" + board[3] + ".png')"
+	usedCards(2);
+}
+
+river = () => {
+	for (let i = 1; i < 2; i++) {
+		board.push(shuffDeck[i]);
+  }
+  document.getElementById("river").style.backgroundImage = "url('./assets/images/" + board[4] + ".png')"
+	usedCards(2);
+}
+
+
+
+// deal = () => {
+//   deal1 = shuffDeck.shift();
+//   document.getElementById("card1").style.backgroundImage = "url('./assets/images/" + deal1 + ".png')"
+// }
+
+

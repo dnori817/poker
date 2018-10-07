@@ -5,11 +5,21 @@ body {
   
 }
 
-.card {
-  /* border: 1px black solid; */
+/* .card {
   background-image: url("./images/card_back.png");
-  height: 300px;
-  width: 200px;
+  height: 310px;
+  width: 220px;
+  margin: 5px;
+  background-size: cover;
+
+  float: left;
+} */
+
+.card {
+  border: 2px black solid;
+  border-radius: 10px;
+  height: 155px;
+  width: 100px;
   margin: 5px;
   background-size: cover;
 
@@ -17,14 +27,16 @@ body {
 }
 
 
-
-.player1 .player2{
-  display: block;
-  clear: both;
+.player1 {
+  float: left;
+  width: 100%;
+  position: relative;
 }
 
 
 .board {
+  float: right;
   display: block;
-  clear: both;
+  width: 100%;    
+  /* clear: both; */
 }

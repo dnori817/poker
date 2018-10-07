@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
         <link rel="stylesheet" type="text/css" href="assets/style.css">
 
         
     </head>
     <body>
         <button onclick="deal()">Deal!</button>
-        <!-- <div class="player2">
-            <div class="card"></div>
-            <div class="card"></div>
+        <button onclick="flop()">Flop!</button>
+        <button onclick="turn()">Turn!</button>
+        <button onclick="river()">River!</button>
+
+        <div class="player2">
+            <h1>Player 2</h1>
+            <div id="card2" class="card"></div>
+            <div id="card4" class="card"></div>
         </div>
         <br>
         <div class="board">
-            <div class="card flop"></div>
-            <div class="card flop"></div>
-            <div class="card flop"></div>
-            <div class="card turn"></div>
-            <div class="card river"></div>
-        </div> -->
+            <h1>Community</h1>
+            <div class="card flop" id="flop1"></div>
+            <div class="card flop" id="flop2"></div>
+            <div class="card flop" id="flop3"></div>
+            <div class="card turn" id="turn"></div>
+            <div class="card river" id="river"></div>
+        </div>
         <br>
-        <div class="player1">
-            <div src="" id="card1" class="card"></div>
-            <div class="card"></div>
+        <div class="player1">   
+            <h1>Player 1</h1>
+            <div id="card1" class="card"></div>
+            <div id="card3" class="card"></div>
         </div>
         
         
