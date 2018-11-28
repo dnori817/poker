@@ -108,6 +108,9 @@ deal = () => {
   
   usedCards(4);
 
+  document.getElementById("dealbtn").style.visibility = "hidden";
+
+
   console.log("Player 1: " + player1);
   console.log("Player 2: " + player2);
 }
@@ -121,15 +124,17 @@ flop = () => {
 		board.push(shuffDeck[i]);
 	}
   
-  document.getElementById("flop1").style.backgroundImage = "url('./assets/images/" + board[0] + ".png')"
 
   setTimeout(function() {
+    document.getElementById("flop1").style.backgroundImage = "url('./assets/images/" + board[0] + ".png')"
+  },3000);
+  setTimeout(function() {
     document.getElementById("flop2").style.backgroundImage = "url('./assets/images/" + board[1] + ".png')"
-  },500);
+  },3500);
 
   setTimeout(function() {
     document.getElementById("flop3").style.backgroundImage = "url('./assets/images/" + board[2] + ".png')"
-  },1000);
+  },4000);
   
   usedCards(4);
   console.log(board);
@@ -140,8 +145,12 @@ turn = () => {
 	for (let i = 1; i < 2; i++) {
 		board.push(shuffDeck[i]);
   }
+
+
+  setTimeout(function() {
+    document.getElementById("turn").style.backgroundImage = "url('./assets/images/" + board[3] + ".png')"
+  },5500);
   
-  document.getElementById("turn").style.backgroundImage = "url('./assets/images/" + board[3] + ".png')"
   
   usedCards(2);
   console.log(board);
@@ -153,7 +162,11 @@ river = () => {
 		board.push(shuffDeck[i]);
   }
 
-  document.getElementById("river").style.backgroundImage = "url('./assets/images/" + board[4] + ".png')"
+
+  setTimeout(function() {
+    document.getElementById("river").style.backgroundImage = "url('./assets/images/" + board[4] + ".png')"
+  },7500);
+
   
   usedCards(2);
   console.log(board);
