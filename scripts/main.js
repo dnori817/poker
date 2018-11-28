@@ -42,8 +42,13 @@ class Deck {
 
     // let card = (suit, rank) 
     // []
+
+    // 11=J
+    // 12=Q
+    // 13=K
+    // 14=A
     const suits = ['H', 'S', 'C', 'D'];
-    const ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
+    const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14'];
 
 
     // card = (suit, rank) => {
@@ -65,12 +70,13 @@ class Deck {
 }
 
 const newDeck = new Deck();
+console.log(newDeck);
 
 const shuffDeck = shuffle(newDeck.deck)
 console.log(shuffDeck)
-
+  
 let player1 = [];
-let player2 =[];
+let player2 = [];
 let board = [];
 
 usedCards = (used) => {
@@ -102,8 +108,8 @@ deal = () => {
   
   usedCards(4);
 
-  console.log(player1);
-  console.log(player2);
+  console.log("Player 1: " + player1);
+  console.log("Player 2: " + player2);
 }
 
 
@@ -141,7 +147,7 @@ turn = () => {
   console.log(board);
 
 }
-
+ 
 river = () => {
 	for (let i = 1; i < 2; i++) {
 		board.push(shuffDeck[i]);
@@ -151,8 +157,15 @@ river = () => {
   
   usedCards(2);
   console.log(board);
-
+  
+  let hand = player1.concat(board).sort();
+  
+  console.log("Player 1: " + hand);
+  let hand2 = player2.concat(board).sort();
+  console.log("Player 2: " + hand2);
 }
+
+
 
 
 
