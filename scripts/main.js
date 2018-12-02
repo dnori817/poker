@@ -170,16 +170,22 @@ river = () => {
   
   usedCards(2);
   console.log(board);
-  
-  let hand = player1.concat(board).sort();
-  
+  makeHand();
+  console.log(hand);
+  checkStraight();
+}
+
+makeHand = () => {
+  hand = player1.concat(board)
+
   console.log("Player 1: " + hand);
-  let hand2 = player2.concat(board).sort();
+  hand2 = player2.concat(board)
   console.log("Player 2: " + hand2);
 }
 
-
-
+checkStraight = () => {
+  console.log(hand.sort())
+}
 
 
 // deal = () => {
