@@ -201,9 +201,8 @@ checkStraight = () => {
     let diff = valHand[i+1] - valHand[i];
     let diff2 = valHand[i] - valHand[i-1];
         
-    if ((diff === 1) || (diff2 === 1) )	{
+    if (((diff === 1) || (diff2 === 1)) && (valHand[i] != valHand[i+1]) )	{
       strtHand.push(valHand[i])
-    
     }
   }
 
