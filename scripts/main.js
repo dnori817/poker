@@ -149,7 +149,7 @@ turn = () => {
 
   setTimeout(function() {
     document.getElementById("turn").style.backgroundImage = "url('./assets/images/" + board[3] + ".png')"
-  },5500);
+  },5000);
   
   
   usedCards(2);
@@ -165,26 +165,58 @@ river = () => {
 
   setTimeout(function() {
     document.getElementById("river").style.backgroundImage = "url('./assets/images/" + board[4] + ".png')"
-  },7500);
+  },6500);
 
   
   usedCards(2);
   console.log(board);
   makeHand();
   console.log(hand);
-  checkStraight();
+  setTimeout(function() {
+    checkStraight();
+  },7000);
 }
 
 makeHand = () => {
-  hand = player1.concat(board)
+  hand = player1.concat(board).sort();
 
   console.log("Player 1: " + hand);
-  hand2 = player2.concat(board)
+  hand2 = player2.concat(board).sort();
   console.log("Player 2: " + hand2);
 }
 
 checkStraight = () => {
-  console.log(hand.sort())
+  let valCard
+  let valHand = [];
+  for (let i = 0; i < hand.length; i++) {
+    valCard = parseInt(hand[i], 10);
+    valHand.push(valCard)
+  }
+  console.log(valHand)
+
+    
+  let strtHand = [];
+
+  for (let i = 0; i < valHand.length; i++) {
+    let diff = valHand[i+1] - valHand[i];
+    let diff2 = valHand[i] - valHand[i-1];
+        
+    if ((diff === 1) || (diff2 === 1) )	{
+      strtHand.push(valHand[i])
+    
+    }
+  }
+
+  if (strtHand[6] - strtHand[2] === 4) {
+    alert("You have a " + strtHand[6] + " high straight")
+  } else if (strtHand[5] - strtHand[1] === 4) {
+    alert("You have a " + strtHand[5] + " high straight")
+  } else if (strtHand[4] - strtHand[0] === 4) {
+    alert("You have a " + strtHand[4] + " high straight")
+  } else {
+    alert("no straight for you!")
+  }
+  
 }
 
 
