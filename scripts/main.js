@@ -217,28 +217,40 @@ checkStraight = () => {
       strtHand.push(valHand2[i])
     }
   }
-
   
+  let highCard
 
   if (valHand[6] === 14 && valHand2[0] === 2 && valHand2[1] === 3 && valHand2[2]  === 4 && valHand2[3] === 5 && valHand2[4] != 6) {
-    alert("You have a 5 high straight")
     isStraight = true
+    highCard = 5 
   } else if (strtHand[6] - strtHand[2] === 4) {
-    alert("You have a " + strtHand[6] + " high straight")
     isStraight = true
+    highCard = strtHand[6]
   } else if (strtHand[5] - strtHand[1] === 4) {
-    alert("You have a " + strtHand[5] + " high straight")
     isStraight = true
+    highCard = strtHand[5]
   } else if (strtHand[4] - strtHand[0] === 4) {
-    alert("You have a " + strtHand[4] + " high straight")
     isStraight = true
-  } else {
-    alert("no straight for you!")
-  }
-  
-  if (isStraight == true) {
-    alert('straight!')
+    highCard = strtHand[4]
   } 
+  
+  // if (isStraight == true && strtHand[strtHand.length-1] === 13) {
+  // 	alert('King straight!')
+  // } 
+  
+  if (isStraight == true && highCard === 14 ) {
+    alert('Ace High Staight!')
+  } else if (isStraight == true && highCard === 13) {
+    alert('King High Straight!') 
+  } else if (isStraight == true && highCard === 12) {
+    alert('Queen High Straight!')
+  } else if (isStraight == true && highCard === 11) {
+    alert('Jack High Straight!')
+  } else if (isStraight == true) {
+    alert(highCard + ' High Straight!')
+  } else {
+    alert('No Straight For You!')
+  }
   
   console.log(strtHand)
 }
