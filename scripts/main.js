@@ -18,7 +18,7 @@
 // 8 [8]
 // 9 [9]
 // 10 [10]
-// Jack [11]
+// Jack [11] 
 // Queen [12]
 // King [13]
 // Ace [1 || 14]
@@ -48,7 +48,8 @@ class Deck {
     // 13=K
     // 14=A
     const suits = ['H', 'S', 'C', 'D'];
-    const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14'];
+    const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', '11J', '12Q', '13K', '14A'];
+    
 
 
     // card = (suit, rank) => {
@@ -98,13 +99,13 @@ deal = () => {
   document.getElementById("card1").style.backgroundImage = "url('./assets/images/" + player1[0] + ".png')"
   setTimeout(function() {
     document.getElementById("card2").style.backgroundImage = "url('./assets/images/" + player2[0] + ".png')"
-  },500);
+  },50);
   setTimeout(function() {
     document.getElementById("card3").style.backgroundImage = "url('./assets/images/" + player1[1] + ".png')"
-  },1000);
+  },100);
   setTimeout(function() {
     document.getElementById("card4").style.backgroundImage = "url('./assets/images/" + player2[1] + ".png')"
-  },1500);  
+  },150);  
   
   usedCards(4);
 
@@ -127,14 +128,14 @@ flop = () => {
 
   setTimeout(function() {
     document.getElementById("flop1").style.backgroundImage = "url('./assets/images/" + board[0] + ".png')"
-  },3000);
+  },300);
   setTimeout(function() {
     document.getElementById("flop2").style.backgroundImage = "url('./assets/images/" + board[1] + ".png')"
-  },3500);
+  },350);
 
   setTimeout(function() {
     document.getElementById("flop3").style.backgroundImage = "url('./assets/images/" + board[2] + ".png')"
-  },4000);
+  },400);
   
   usedCards(4);
   console.log(board);
@@ -149,7 +150,7 @@ turn = () => {
 
   setTimeout(function() {
     document.getElementById("turn").style.backgroundImage = "url('./assets/images/" + board[3] + ".png')"
-  },5000);
+  },500);
   
   
   usedCards(2);
@@ -165,7 +166,7 @@ river = () => {
 
   setTimeout(function() {
     document.getElementById("river").style.backgroundImage = "url('./assets/images/" + board[4] + ".png')"
-  },6500);
+  },650);
 
   
   usedCards(2);
@@ -174,7 +175,7 @@ river = () => {
   console.log(hand);
   setTimeout(function() {
     checkStraight();
-  },7000);
+  },700);
 }
 
 makeHand = () => {
@@ -186,6 +187,7 @@ makeHand = () => {
 }
 
 checkStraight = () => {
+  let isStraight
   let valCard
   let valHand = [];
   for (let i = 0; i < hand.length; i++) {
@@ -194,31 +196,52 @@ checkStraight = () => {
   }
   console.log(valHand)
 
+  let valHand2 = []
+
+  for (let i = 0; i < valHand.length; i++) {
+    if (valHand[i] != valHand[i+1]) {
+      valHand2.push(valHand[i])
+    }
+  }
+  console.log(valHand2)
+    
+
     
   let strtHand = [];
 
-  for (let i = 0; i < valHand.length; i++) {
-    let diff = valHand[i+1] - valHand[i];
-    let diff2 = valHand[i] - valHand[i-1];
+  for (let i = 0; i < valHand2.length; i++) {
+    let diff = valHand2[i+1] - valHand2[i];
+    let diff2 = valHand2[i] - valHand2[i-1];
         
-    if (((diff === 1) || (diff2 === 1)) && (valHand[i] != valHand[i+1]) )	{
-      strtHand.push(valHand[i])
+    if (diff === 1 || diff2 === 1)	{
+      strtHand.push(valHand2[i])
     }
   }
 
-  if (strtHand[6] - strtHand[2] === 4) {
+  
+
+  if (valHand[6] === 14 && valHand2[0] === 2 && valHand2[1] === 3 && valHand2[2]  === 4 && valHand2[3] === 5 && valHand2[4] != 6) {
+    alert("You have a 5 high straight")
+    isStraight = true
+  } else if (strtHand[6] - strtHand[2] === 4) {
     alert("You have a " + strtHand[6] + " high straight")
+    isStraight = true
   } else if (strtHand[5] - strtHand[1] === 4) {
     alert("You have a " + strtHand[5] + " high straight")
+    isStraight = true
   } else if (strtHand[4] - strtHand[0] === 4) {
     alert("You have a " + strtHand[4] + " high straight")
+    isStraight = true
   } else {
     alert("no straight for you!")
   }
   
+  if (isStraight == true) {
+    alert('straight!')
+  } 
+  
+  console.log(strtHand)
 }
-
-
 // deal = () => {
 //   deal1 = shuffDeck.shift();
 //   document.getElementById("card1").style.backgroundImage = "url('./assets/images/" + deal1 + ".png')"
