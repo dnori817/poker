@@ -174,6 +174,7 @@ river = () => {
   makeHand();
   console.log(hand);
   setTimeout(function() {
+    checkFlush();
     checkStraight();
   },700);
 }
@@ -185,9 +186,30 @@ makeHand = () => {
   hand2 = player2.concat(board).sort();
   console.log("Player 2: " + hand2);
 }
+let isFlush
 
+checkFlush = () => {
+
+  let flushHand = [];
+
+
+  for (let i = 0; i < hand.length; i++) {
+    let card = hand[i];
+    flushHand.push(card.charAt(card.length-1));
+  }
+
+
+  flushHand.sort();
+  console.log(flushHand)
+
+  if (flushHand[0] === flushHand[4] || flushHand[1] === flushHand[5] || flushHand[2] === flushHand[6]) {
+    alert("Flush!")
+    isFlush = true
+  }
+}
+
+let isStraight
 checkStraight = () => {
-  let isStraight
   let valCard
   let valHand = [];
   for (let i = 0; i < hand.length; i++) {
@@ -254,6 +276,8 @@ checkStraight = () => {
   
   console.log(strtHand)
 }
+
+
 // deal = () => {
 //   deal1 = shuffDeck.shift();
 //   document.getElementById("card1").style.backgroundImage = "url('./assets/images/" + deal1 + ".png')"
