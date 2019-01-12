@@ -176,6 +176,7 @@ river = () => {
   setTimeout(function() {
     checkFlush();
     checkStraight();
+    checkPair();
   },700);
 }
 
@@ -186,6 +187,48 @@ makeHand = () => {
   hand2 = player2.concat(board).sort();
   console.log("Player 2: " + hand2);
 }
+
+pairCount = 0
+let isFour = false
+let isThree = false
+let isPair = false
+let is2pair = false
+let isFull = false
+checkPair = () => {
+	let valCard
+  let valHand = [];
+  for (let i = 0; i < hand.length; i++) {
+    valCard = parseInt(hand[i], 10);
+    valHand.push(valCard)
+  }
+  console.log(valHand)
+
+	for (let i = 0; i < valHand.length; i++) {
+  	if (valHand[i] === valHand[i+3]) {
+			isFour = true
+		} else if (valHand[i] === valHand[i+2]) {
+			isThree = true
+		} else if (valHand[i] === valHand[i+1]) {
+			isPair = true
+			pairCount += 1
+		}
+	}
+
+	if (isThree == true && isPair == true) {
+		alert('Full House!')
+	} else if (isFour == true) {
+		alert('Four of a Kind!')
+	} else if (isThree == true) {
+		alert('Three of a Kind!')		
+	} else if (pairCount >= 2) {
+		alert('Two Pair!')
+	} else if (pairCount == 1) {
+		alert('Pair!')
+	}
+}
+
+
+
 let isFlush
 
 checkFlush = () => {
@@ -208,6 +251,16 @@ checkFlush = () => {
   }
 }
 
+// findVal = () => {
+//   let valCard
+//   let valHand = [];
+//   for (let i = 0; i < hand.length; i++) {
+//     valCard = parseInt(hand[i], 10);
+//     valHand.push(valCard)
+//   }
+//   console.log(valHand)
+// }
+
 let isStraight
 checkStraight = () => {
   let valCard
@@ -227,7 +280,7 @@ checkStraight = () => {
   }
   console.log(valHand2)
     
-
+  
     
   let strtHand = [];
 
@@ -270,8 +323,8 @@ checkStraight = () => {
     alert('Jack High Straight!')
   } else if (isStraight == true) {
     alert(highCard + ' High Straight!')
-  } else {
-    alert('No Straight For You!')
+  // } else {
+  //   alert('No Straight For You!')
   }
   
   console.log(strtHand)
