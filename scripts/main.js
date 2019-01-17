@@ -189,12 +189,23 @@ makeHand = () => {
 }
 
 pairCount = 0
+threeCount = 0
 let isFour = false
 let isThree = false
 let isPair = false
 let is2pair = false
 let isFull = false
+
+pairCount = 0
+threeCount = 0
+let isFour = false
+let isThree = false
+let isPair = false
+let is2pair = false
+let isFull = false
+
 checkPair = () => {
+  let val
 	let valCard
   let valHand = [];
   for (let i = 0; i < hand.length; i++) {
@@ -205,28 +216,56 @@ checkPair = () => {
 
 	for (let i = 0; i < valHand.length; i++) {
   	if (valHand[i] === valHand[i+3]) {
-			isFour = true
+      isFour = true
+      val = valHand[i]
+			break
+
+  
 		} else if (valHand[i] === valHand[i+2]) {
-			isThree = true
-		} else if (valHand[i] === valHand[i+1]) {
-			isPair = true
-			pairCount += 1
+      isThree = true
+      val = valHand[i]
+
+			threeCount += 1
+		
+			// break     
+
+		} else if (valHand[i] === valHand[i+1])  {
+			if (isThree == false) {
+				pairCount += 1
+      	isPair = true
+      	val = valHand[i]
+			}
 		}
+  } 
+  
+  console.log(pairCount)
+  console.log(threeCount)
+	
+	
+	if(val == 14) {
+		val = "Ace"
+	} else if (val == 13) {
+		val = "King"
+	} else if (val == 12) {
+		val = "Queen"
+	} else if (val == 11) {
+		val = "Jack"
 	}
 
-	if (isThree == true && isPair == true) {
+
+	if (isFour == true) {
+		alert('Four ' + val + "s")
+	} else if (threeCount == 2 || (threeCount >= 1 && pairCount >= 1)) {
+	// } else if (isThree == true && isPair == true) {
 		alert('Full House!')
-	} else if (isFour == true) {
-		alert('Four of a Kind!')
-	} else if (isThree == true) {
-		alert('Three of a Kind!')		
+	} else if (isThree == true && pairCount == 0) {
+		alert('Three ' + val + "s")		
 	} else if (pairCount >= 2) {
-		alert('Two Pair!')
+		alert('Two Pair! ' + val + ' High' )
 	} else if (pairCount == 1) {
-		alert('Pair!')
+		alert('Pair of ' + val + "s")
 	}
 }
-
 
 
 let isFlush
