@@ -188,13 +188,6 @@ makeHand = () => {
   console.log("Player 2: " + hand2);
 }
 
-pairCount = 0
-threeCount = 0
-let isFour = false
-let isThree = false
-let isPair = false
-let is2pair = false
-let isFull = false
 
 pairCount = 0
 threeCount = 0
@@ -226,15 +219,19 @@ checkPair = () => {
       val = valHand[i]
 
 			threeCount += 1
+
+			let index = valHand.indexOf(val)
+			valHand.splice(index, 1)
+			console.log(valHand)
 		
 			// break     
 
 		} else if (valHand[i] === valHand[i+1])  {
-			if (isThree == false) {
+			// if (isThree == false) {
 				pairCount += 1
       	isPair = true
       	val = valHand[i]
-			}
+			// } 
 		}
   } 
   
@@ -264,9 +261,10 @@ checkPair = () => {
 		alert('Two Pair! ' + val + ' High' )
 	} else if (pairCount == 1) {
 		alert('Pair of ' + val + "s")
-	}
+	} else {
+    alert(valHand[valHand.length-1] + ' High')
+  }
 }
-
 
 let isFlush
 
