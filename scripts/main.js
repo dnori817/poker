@@ -232,7 +232,9 @@ checkPair = () => {
       	isPair = true
       	val = valHand[i]
 			// } 
-		}
+		} else {
+      val = valHand[valHand.length - 1]
+    }
   } 
   
   console.log(pairCount)
@@ -262,7 +264,7 @@ checkPair = () => {
 	} else if (pairCount == 1) {
 		alert('Pair of ' + val + "s")
 	} else {
-    alert(valHand[valHand.length-1] + ' High')
+    alert(val + ' High')
   }
 }
 
