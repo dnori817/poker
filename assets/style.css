@@ -1,6 +1,7 @@
 body {
-  background-image: url("./images/poker-table-felt.jpg");
+  background-image: url("./images/table2.jpg");
   background-size: cover;
+  
   /* background-repeat: no-repeat; */
   
 }
@@ -27,16 +28,51 @@ body {
 }
 
 
-.player1 {
+.player2 {
   float: left;
   width: 100%;
   position: relative;
+  margin-left: 100px;
+  /* margin-bottom: 100px; */
+}
+
+.player1 {
+  float: right;
+  display: block;
+  width: 30%;
+  position: relative;
+  /* text-align: center; */
+  bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
 .board {
-  float: right;
+  /* float: right; */
   display: block;
-  width: 100%;    
+  
+  /* margin:auto; */
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;    
   /* clear: both; */
+}
+.container {
+  clear: both;
+  position: relative;
+}
+
+.info {
+  /* float: right; */
+  font-size: 2em;
+  clear: both;
+  border: 1px dashed black;
+  height: 28%;
+  width: 60%;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  bottom: 0;
+  color: white;
+  text-align: center;
 }

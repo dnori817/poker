@@ -1,29 +1,6 @@
-// const card = {
-//   name: "Ace of Spades"
-//   label: 
-//   rank: //
-//   suit: /   image:
 
-// }
 
-// const suits = []
-// 
-// A
-// 2 [2]
-// 3 [3]
-// 4 [4]
-// 5 [5]
-// 6 [6]
-// 7 [7]
-// 8 [8]
-// 9 [9]
-// 10 [10]
-// Jack [11] 
-// Queen [12]
-// King [13]
-// Ace [1 || 14]
 
-// 
 
 // Fisher-Yates shuffle algorithm
 shuffle = (array) => {
@@ -40,24 +17,8 @@ class Deck {
   constructor() {
     this.deck = [];
 
-    // let card = (suit, rank) 
-    // []
-
-    // 11=J
-    // 12=Q
-    // 13=K
-    // 14=A
     const suits = ['H', 'S', 'C', 'D'];
     const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', '11J', '12Q', '13K', '14A'];
-    
-
-
-    // card = (suit, rank) => {
-    //   this.suit = suit;
-    //   this.rank = rank;
-    //   this.name = rank + ' of ' + suit;
-
-    // }
 
     for (let suit in suits) {
       for (let rank in ranks) {
@@ -233,6 +194,7 @@ checkPair = () => {
       	val = valHand[i]
 			// } 
 		} else {
+      if (isThree == false && isPair == false)
       val = valHand[valHand.length - 1]
     }
   } 
@@ -348,9 +310,6 @@ checkStraight = () => {
     highCard = strtHand[4]
   } 
   
-  // if (isStraight == true && strtHand[strtHand.length-1] === 13) {
-  // 	alert('King straight!')
-  // } 
   
   if (isStraight == true && highCard === 14 ) {
     alert('Ace High Staight!')
@@ -362,17 +321,11 @@ checkStraight = () => {
     alert('Jack High Straight!')
   } else if (isStraight == true) {
     alert(highCard + ' High Straight!')
-  // } else {
-  //   alert('No Straight For You!')
+
   }
   
   console.log(strtHand)
 }
 
-
-// deal = () => {
-//   deal1 = shuffDeck.shift();
-//   document.getElementById("card1").style.backgroundImage = "url('./assets/images/" + deal1 + ".png')"
-// }
 
 
