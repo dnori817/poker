@@ -138,6 +138,7 @@ river = () => {
     checkFlush();
     checkStraight();
     checkPair();
+    showResult();
   },700);
 }
 
@@ -149,6 +150,12 @@ makeHand = () => {
   console.log("Player 2: " + hand2);
 }
 
+
+let result = ""
+
+showResult = () => {
+  document.getElementById('info').innerHTML = result
+}
 
 pairCount = 0
 threeCount = 0
@@ -215,18 +222,24 @@ checkPair = () => {
 
 
 	if (isFour == true) {
-		alert('Four ' + val + "s")
+    result = 'Four ' + val + "s"
+		// alert('Four ' + val + "s")
 	} else if (threeCount == 2 || (threeCount >= 1 && pairCount >= 1)) {
 	// } else if (isThree == true && isPair == true) {
-		alert('Full House!')
+    result = 'Full House!'
+		// alert('Full House!')
 	} else if (isThree == true && pairCount == 0) {
-		alert('Three ' + val + "s")		
+    result = 'Three ' + val + "s"
+		// alert('Three ' + val + "s")		
 	} else if (pairCount >= 2) {
-		alert('Two Pair! ' + val + ' High' )
+    result = 'Two Pair! ' + val + ' High'
+		// alert('Two Pair! ' + val + ' High' )
 	} else if (pairCount == 1) {
-		alert('Pair of ' + val + "s")
+    result = 'Pair of ' + val + "s" 
+		// alert('Pair of ' + val + "s")
 	} else {
-    alert(val + ' High')
+    result = val + ' High'
+    // alert(val + ' High')
   }
 }
 
@@ -247,7 +260,8 @@ checkFlush = () => {
   console.log(flushHand)
 
   if (flushHand[0] === flushHand[4] || flushHand[1] === flushHand[5] || flushHand[2] === flushHand[6]) {
-    alert("Flush!")
+    result = "Flush!"
+    // alert("Flush!")
     isFlush = true
   }
 }
@@ -312,15 +326,15 @@ checkStraight = () => {
   
   
   if (isStraight == true && highCard === 14 ) {
-    alert('Ace High Staight!')
+    result = 'Ace High Staight!'
   } else if (isStraight == true && highCard === 13) {
-    alert('King High Straight!') 
+    result = 'King High Straight!' 
   } else if (isStraight == true && highCard === 12) {
-    alert('Queen High Straight!')
+    result = 'Queen High Straight!'
   } else if (isStraight == true && highCard === 11) {
-    alert('Jack High Straight!')
+    result = 'Jack High Straight!'
   } else if (isStraight == true) {
-    alert(highCard + ' High Straight!')
+    result = highCard + ' High Straight!'
 
   }
   
