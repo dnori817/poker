@@ -68,8 +68,8 @@ body {
   font-size: 5em;
   clear: both;
   border: 1px dashed black;
-  height: 28%;
-  width: 60%;
+  height: 33%;
+  width: 100%;
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   bottom: 0;

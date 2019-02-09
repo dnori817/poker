@@ -13,6 +13,10 @@ shuffle = (array) => {
   return array;
 }
 
+refresh = () => {
+  location.reload();
+}
+
 class Deck {
   constructor() {
     this.deck = [];
@@ -136,8 +140,8 @@ river = () => {
   console.log(hand);
   setTimeout(function() {
     checkFlush();
-    checkStraight(hand);
-    checkPair();
+    // checkStraight(hand);
+    // checkPair();
     showResult();
   },700);
 }
@@ -150,6 +154,7 @@ makeHand = () => {
   hand2 = player2.concat(board).sort();
   console.log("Player 2: " + hand2);
 }
+// let hand = ["05S", "06S", "07S", "08S", "09S", "12D", "12D"]
 
 
 let result = ""
@@ -305,6 +310,8 @@ checkStraight = (hand) => {
   } else if (isStraight == true) {
     result = highCard + ' High Straight!'
 
+  } else {
+    checkPair();
   }
   
   console.log(strtHand)
@@ -312,7 +319,6 @@ checkStraight = (hand) => {
 
 checkFlush = () => {
 
-  // let hand = ["05S", "06S", "07S", "08S", "09D", "12D", "12S"]
   // let result
   
   
@@ -350,21 +356,29 @@ checkFlush = () => {
     console.log("Spade Flush")
     isFlush = true
     // val = parseInt(highCard)
-    // result = "Spade Flush,  " + val + " High"
+    result = "Spade Flush"
   } else if (heartHand.length >= 5) {
     flushHand = heartHand
     console.log("Heart Flush")
     isFlush = true
+    result = "Heart Flush"
+
   } else if (diamondHand.length >= 5) {
     flushHand = diamondHand
     console.log("Diamond Flush")
     isFlush = true
+    result = "Diamond Flush"
+
   } else if (clubHand.length >= 5) {
     flushHand = clubHand
     console.log("Club Flush")
     isFlush = true
+    result = "Club Flush"
+
   } 
   
+
+
   if (isFlush == false) {
     checkStraight(hand);
   } else {
@@ -376,13 +390,7 @@ checkFlush = () => {
   }
   
   console.log(result)
-  
-  
-  
-  
-  
-  
-  
+    
   // console.log(spadeHand)
   // console.log(heartHand)
   // console.log(diamondHand)
