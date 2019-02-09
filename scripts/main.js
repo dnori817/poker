@@ -32,8 +32,8 @@ class Deck {
 }
 
 const newDeck = new Deck();
-console.log(newDeck);
 
+console.log(newDeck);
 const shuffDeck = shuffle(newDeck.deck)
 console.log(shuffDeck)
   
@@ -136,12 +136,13 @@ river = () => {
   console.log(hand);
   setTimeout(function() {
     checkFlush();
-    checkStraight();
+    checkStraight(hand);
     checkPair();
     showResult();
   },700);
 }
 
+let hand = [];
 makeHand = () => {
   hand = player1.concat(board).sort();
 
@@ -243,41 +244,9 @@ checkPair = () => {
   }
 }
 
-let isFlush
-
-checkFlush = () => {
-
-  let flushHand = [];
-
-
-  for (let i = 0; i < hand.length; i++) {
-    let card = hand[i];
-    flushHand.push(card.charAt(card.length-1));
-  }
-
-
-  flushHand.sort();
-  console.log(flushHand)
-
-  if (flushHand[0] === flushHand[4] || flushHand[1] === flushHand[5] || flushHand[2] === flushHand[6]) {
-    result = "Flush!"
-    // alert("Flush!")
-    isFlush = true
-  }
-}
-
-// findVal = () => {
-//   let valCard
-//   let valHand = [];
-//   for (let i = 0; i < hand.length; i++) {
-//     valCard = parseInt(hand[i], 10);
-//     valHand.push(valCard)
-//   }
-//   console.log(valHand)
-// }
-
-let isStraight
-checkStraight = () => {
+// let isFlush
+let isStraight = false
+checkStraight = (hand) => {
   let valCard
   let valHand = [];
   for (let i = 0; i < hand.length; i++) {
@@ -341,5 +310,84 @@ checkStraight = () => {
   console.log(strtHand)
 }
 
+checkFlush = () => {
 
+  // let hand = ["05S", "06S", "07S", "08S", "09D", "12D", "12S"]
+  // let result
+  
+  
+  
+  let spadeHand = [];
+  let heartHand = [];
+  let diamondHand = [];
+  let clubHand = [];
+  
 
+  
+  for (let i = 0; i < hand.length; i++) {
+    let card = hand[i];
+  
+    if (card.includes("S")) {
+      spadeHand.push(card);
+    } else if (card.includes("H")) {
+      heartHand.push(card);
+    } else if (card.includes("D")) {
+      diamondHand.push(card);
+    } else if (card.includes("C")) {
+      clubHand.push(card);
+    }
+  
+  
+  }
+  
+  let isFlush = false
+  let flushHand = []
+  
+  // let highCard = flushHand[flushHand.length-1]
+  
+  if (spadeHand.length >= 5) {
+    flushHand = spadeHand
+    console.log("Spade Flush")
+    isFlush = true
+    // val = parseInt(highCard)
+    // result = "Spade Flush,  " + val + " High"
+  } else if (heartHand.length >= 5) {
+    flushHand = heartHand
+    console.log("Heart Flush")
+    isFlush = true
+  } else if (diamondHand.length >= 5) {
+    flushHand = diamondHand
+    console.log("Diamond Flush")
+    isFlush = true
+  } else if (clubHand.length >= 5) {
+    flushHand = clubHand
+    console.log("Club Flush")
+    isFlush = true
+  } 
+  
+  if (isFlush == false) {
+    checkStraight(hand);
+  } else {
+    checkStraight(flushHand);
+    if (isStraight == true) {
+      // console.log("Straight Flush!!!")
+      result = "Straight Flush!!!"
+    }
+  }
+  
+  console.log(result)
+  
+  
+  
+  
+  
+  
+  
+  // console.log(spadeHand)
+  // console.log(heartHand)
+  // console.log(diamondHand)
+  // console.log(clubHand)
+  
+  // console.log(result)
+
+}

@@ -30,7 +30,7 @@ body {
 
 .player2 {
   float: left;
-  width: 100%;
+  width: 80%;
   position: relative;
   margin-left: 100px;
   /* margin-bottom: 100px; */
