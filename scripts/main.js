@@ -144,6 +144,7 @@ river = () => {
     // checkPair();
     showResult();
   },700);
+
 }
 
 let hand = [];
@@ -154,7 +155,7 @@ makeHand = () => {
   hand2 = player2.concat(board).sort();
   console.log("Player 2: " + hand2);
 }
-// let hand = ["05S", "06S", "07S", "08S", "09S", "12D", "12D"]
+// let hand = ["05S", "06S", "07S", "08D", "09S", "12D", "12D"]
 
 
 let result = ""
@@ -217,36 +218,38 @@ checkPair = () => {
 	
 	
 	if(val == 14) {
-		val = "Ace"
+    val = "Ace"
 	} else if (val == 13) {
-		val = "King"
+    val = "King"
 	} else if (val == 12) {
 		val = "Queen"
 	} else if (val == 11) {
-		val = "Jack"
+    val = "Jack"
 	}
-
-
+  
+  
 	if (isFour == true) {
     result = 'Four ' + val + "s"
 		// alert('Four ' + val + "s")
 	} else if (threeCount == 2 || (threeCount >= 1 && pairCount >= 1)) {
-	// } else if (isThree == true && isPair == true) {
-    result = 'Full House!'
-		// alert('Full House!')
-	} else if (isThree == true && pairCount == 0) {
-    result = 'Three ' + val + "s"
-		// alert('Three ' + val + "s")		
-	} else if (pairCount >= 2) {
-    result = 'Two Pair! ' + val + ' High'
-		// alert('Two Pair! ' + val + ' High' )
-	} else if (pairCount == 1) {
-    result = 'Pair of ' + val + "s" 
-		// alert('Pair of ' + val + "s")
-	} else {
-    result = val + ' High'
-    // alert(val + ' High')
+    // } else if (isThree == true && isPair == true) {
+      result = 'Full House!'
+      // alert('Full House!')
+    } else if (isThree == true && pairCount == 0) {
+      result = 'Three ' + val + "s"
+      // alert('Three ' + val + "s")		
+    } else if (pairCount >= 2) {
+      result = 'Two Pair! ' + val + ' High'
+      // alert('Two Pair! ' + val + ' High' )
+    } else if (pairCount == 1) {
+      result = 'Pair of ' + val + "s" 
+      // alert('Pair of ' + val + "s")
+    } else {
+      result = val + ' High'
+      // alert(val + ' High')
   }
+  checkStraight(hand)
+
 }
 
 // let isFlush
@@ -310,9 +313,7 @@ checkStraight = (hand) => {
   } else if (isStraight == true) {
     result = highCard + ' High Straight!'
 
-  } else {
-    checkPair();
-  }
+  } 
   
   console.log(strtHand)
 }
@@ -379,23 +380,17 @@ checkFlush = () => {
   
 
 
-  if (isFlush == false) {
-    checkStraight(hand);
-  } else {
+  if (isFlush == true) {
     checkStraight(flushHand);
     if (isStraight == true) {
-      // console.log("Straight Flush!!!")
       result = "Straight Flush!!!"
     }
+  } else if (isFlush == false) {
+    checkPair()
   }
+
   
   console.log(result)
     
-  // console.log(spadeHand)
-  // console.log(heartHand)
-  // console.log(diamondHand)
-  // console.log(clubHand)
-  
-  // console.log(result)
 
 }
